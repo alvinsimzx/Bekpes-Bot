@@ -48,8 +48,11 @@ async def bekpes(ctx, user: discord.Member = None):
 
 # Poke command which selects a random user to poke
 @bot.command(name="Poke")
-async def poke(ctx):
-    user = choice(ctx.message.channel.guild.members)
-    await ctx.send(f"{ctx.message.author.mention} poked {user.mention}")
+async def poke(ctx, user: discord.Member = None):
+    if user!=None:
+        await ctx.send(f"{user.mention} " + response)
+    else:
+        user = choice(ctx.message.channel.guild.members)
+        await ctx.send(f"{ctx.message.author.mention} poked {user.mention}")
     
 bot.run(TOKEN)
